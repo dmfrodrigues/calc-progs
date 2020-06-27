@@ -1,0 +1,274 @@
+StoreGDB 0
+PlotsOff 
+ClrDraw
+AxesOff
+GridOff
+prod(getTime→rand
+0→Xmin
+94→Xmax
+⁻62→Ymin
+0→Ymax
+For(I,Xmin,Xmax,∆X:Vertical I:End
+"WEST,EAST,NORTH,SOUTH"
+{2,92,⁻2,⁻60→L₃
+"3RD ARG.: WIDTH OF BLACK LINE"
+For(I,1,2
+	Line(L₃(1),L₃(3),L₃(1),L₃(4),0
+	Line(L₃(1),L₃(4),L₃(2),L₃(4),0
+	Line(L₃(2),L₃(4),L₃(2),L₃(3),0
+	Line(L₃(2),L₃(3),L₃(1),L₃(3),0
+	L₃+{1,⁻1,⁻1,1→L₃
+End
+StorePic 0
+"INITIAL LENGTH"
+3→E
+"SPEED"
+1→T
+"MENU"
+Lbl ME
+RecallPic 0
+For(X,4,51:Line(X,⁻2,X,⁻60,0:End
+Text(⁻1,12,12,"SNAKE"
+Line(7,⁻8,46,⁻8
+Line(7,⁻22,46,⁻22
+Text(27,16,"Start"
+Text(34,16,"Settings"
+Text(41,16,"Credits"
+Text(48,16,"Exit"
+1→O
+25→K
+1→X
+1→Y
+DelVar [A]DelVar L₄DelVar L₅DelVar L₆
+{9,13→dim([A]
+seq(51+4X,X,1,9→L₄
+seq(91-4X,X,1,9→L₅
+seq(⁻3-4Y,Y,1,13→L₆
+Repeat K=105
+	Repeat Y>13 or K=105
+		Repeat X>9 or K=105
+			If sum(K={25,34,92,93,94,82:Then
+				If sum(K={25,34:Then
+					Text(27+7O,11,"   "
+					O+(K=34)-(K=25→O
+					O+4((O<0)-(O>3→O
+					Text(27+7O,11,">"
+				End
+				If K=92:0→O
+				If K=93:1→O
+				If K=94:2→O
+				If K=82:3→O
+			End
+			getKey→K
+			remainder(Y,2
+			AnsL₄(X)+not(Ans)L₅(X
+			If [A](X,Y
+			Then:Pt-On(Ans,L₆(Y),2
+			Else:Pt-Off(Ans,L₆(Y),2
+			End
+			not([A](X,Y→[A](X,Y
+			X+1→X
+		End
+		Y+1→Y
+		1→X
+	End
+	1→Y
+End
+If O=0:Goto GA
+If O=1:Goto SE
+If O=2:Goto CR
+If O=3:Goto EX
+"EXIT"
+Lbl EX
+RecallPic 0
+For(X,4,51:Line(X,⁻2,X,⁻60,0:End
+Text(9,10,"Are you"
+Text(15,10,"sure?"
+Text(⁻1,28,17,"Yes"
+Text(⁻1,39,17,"No"
+1→O
+34→K
+Repeat K=105
+	If sum(K={25,34:Then
+		Text(⁻1,28+11O,10," "
+		not(O→O
+		Text(⁻1,28+11O,10,">"
+	End
+	getKey→K
+End
+If O=0:Then
+	ClrDraw
+	RecallGDB 0
+	Stop
+End
+If O=1:Goto ME
+"CREDITS"
+Lbl CR
+RecallPic 0
+For(Y,⁻2,⁻60,⁻1:Line(4,Y,90,Y,0:End
+Text(8,8,"(C) 2020 Diogo Rodrigues"
+Text(14,8,"Licensed GNU GPLv3"
+Text(25,8,"Many thanks to:"
+Text(31,8,"www.cemetech.net"
+Text(37,8,"tibasicdev.wikidot.com"
+Text(48,8,"(ENTER to continue)"
+Pause 
+Goto ME
+"SETTINGS"
+Lbl SE
+RecallPic 0
+For(Y,⁻2,⁻60,⁻1:Line(4,Y,90,Y,0:End
+Text(8,8,"Initial snake length:"
+Text(15,12,E
+Text(25,8,"Speed:"
+If T=0:"Fast"
+If T=1:"Normal"
+If T=2:"Slow"
+Text(32,12,Ans
+Text(45,8,"Use +/- to change"
+Text(52,8,"ENTER to confirm"
+1→O
+25→K
+Repeat K=105
+	If sum(K={25,34:Then
+		Text(15+17O,8,"   "
+		not(O→O
+		Text(15+17O,8,">"
+	End
+	If sum(K={85,95:Then
+		(K=95)-(K=85
+		If O=0:E+Ans→E
+		If O=1:T-Ans→T
+		E+12((E<3)-(E>14→E
+		T+3((T<0)-(T>2→T
+		
+		Text(15,12,"       "
+		Text(15,12,E
+		If T=0:"Fast"
+		If T=1:"Normal"
+		If T=2:"Slow"
+		Text(32,12,"                        "
+		Text(32,12,Ans
+	End
+	getKey→K
+End
+Goto ME
+"GAME"
+Lbl GA
+RecallPic 0
+For(Y,⁻2,⁻60,⁻1:Line(2,Y,92,Y,0:End
+Text(⁻1,8,8,"How to play"
+Line(8,⁻17,86,⁻17
+Text(22,8,"- Arrows: direction"
+Text(29,8,"- Don't bump into walls"
+Text(36,8,"- Don't collide with snake"
+Text(50,8,"(ENTER to start)"
+Pause 
+RecallPic 0
+DelVar [A]DelVar L₅DelVar L₆
+{21,13→dim([A]
+seq(7+4(I-1),I,1,21→L₅
+seq(⁻7-4(I-1),I,1,13→L₆
+3→X
+round(0.5(1+13→Y
+26→D
+"SNAKE"
+E→C
+DelVar L₁DelVar L₂
+299→dim(L₁
+Ans→dim(L₂
+For(I,1,C
+	1→[A](X,Y)
+	X→L₁(I
+	Y→L₂(I
+	Pt-Off(L₅(X),L₆(Y),1
+	Pt-Off(L₅(X),L₆(Y),2
+	X+(D=26)-(D=24→X
+	Y+(D=34)-(D=25→Y
+End
+X-(D=26)+(D=24→X
+Y-(D=34)+(D=25→Y
+"FOOD"
+Repeat not([A](A,B
+	randInt(1,21→A
+	randInt(1,13→B
+End
+2→[A](A,B
+Pt-Off(L₅(A),L₆(B),3
+"COUNTER"
+StorePic 1
+For(I,84,90:Line(I,⁻2,I,⁻12,0:End
+For(I,3,1,⁻1
+	Text(⁻1,4,86,I
+	For(J,1,700:End
+End
+RecallPic 1
+"START"
+C+1→I
+0→[A](L₁(1),L₂(1
+Repeat not(I
+	While I≤299
+		For(K,1,200T:End
+		getKey→K
+		If K:K→D
+		X+(D=26)-(D=24→X
+		Y+(D=34)-(D=25→Y
+		X→L₁(I
+		Y→L₂(I
+		If X<1 or X>21 or Y<1 or Y>13:Then
+			301→I
+		Else:If 1>[A](X,Y:Then
+			1→[A](X,Y
+			"THE HEAD CAN GO TO THE TAIL"
+			I-C+1
+			Ans+299((Ans<1)-(Ans>299
+			0.5→[A](L₁(Ans),L₂(Ans
+			"DELETE TAIL"
+			I-C
+			Ans+299((Ans<1)-(Ans>299
+			Pt-On(L₅(L₁(Ans)),L₆(L₂(Ans)),2
+			Pt-On(L₅(L₁(Ans)),L₆(L₂(Ans)),1
+			"MAKE SNAKE HEAD"
+			Pt-Off(L₅(X),L₆(Y),1
+			Pt-Off(L₅(X),L₆(Y),2
+		Else:If 1=[A](X,Y:Then
+			301→I
+		Else:If 2=[A](X,Y:Then
+			1→[A](X,Y
+			"MAKE SNAKE HEAD"
+			Pt-Off(L₅(X),L₆(Y),1
+			Pt-Off(L₅(X),L₆(Y),2
+			"INCREASE SCORE AND CREATE FOOD"
+			C+1→C
+			Repeat 0=[A](A,B
+				randInt(1,21→A
+				randInt(1,13→B
+			End
+			2→[A](A,B
+			Pt-Off(L₅(A),L₆(B),3
+		End:End:End:End
+		I+1→I
+	End
+	I≤300→I
+End
+RecallPic 0
+For(Y,⁻2,⁻60,⁻1:Line(2,Y,92,Y,0:End
+Text(⁻1,10,21,"GAME OVER"
+Line(18,⁻7,76,⁻7
+Line(18,⁻19,76,⁻19
+Text(27,21,"Score:"
+Text(27,44,C
+Text(39,21,"Menu"
+Text(47,21,"Retry"
+1→O
+25→K
+Repeat K=105
+	If sum(K={25,34:Then
+		Text(39+8O,17,"   "
+		not(O→O
+		Text(39+8O,17,">"
+	End
+	getKey→K
+End
+If 0=O:Goto ME
+If 1=O:Goto GA
