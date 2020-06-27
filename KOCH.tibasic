@@ -1,0 +1,75 @@
+Repeat Ans>0
+Input "Iterations:",I
+round(I,0→I
+End
+
+DelVar L₁
+DelVar L₂
+4^I+1→dim(L₁
+Ans→dim(L₂
+
+1→L₁(1
+1→L₂(1
+11→L₁(dim(L₁
+1→L₂(dim(L₂
+
+1→Xmin
+11→Xmax
+⁻4→Ymin
+9→Ymax
+
+For(Z,1,I
+	4^(I-Z+1)→S
+	For(N,1+S,dim(L₁),S
+
+		N-S→M
+
+		L₁(M→A
+		L₂(M→B
+
+		L₁(N)-A→C
+		L₂(N)-B→D
+		π/6+R►Pθ(C,D→θ
+		R►Pr(C,D)3^(⁻.5→R
+		A+P►Rx(R,θ→X
+		B+P►Ry(R,θ→Y
+
+		M+.5S→O
+		X→L₁(O
+		Y→L₂(O
+
+		M+.25S→V
+		M+.75S→W
+
+		C/3→O
+		A+O→L₁(V
+		A+2O→L₁(W
+		D/3→O
+		B+O→L₂(V
+		B+2O→L₂(W
+
+	End
+End
+
+For(N,1,dim(L₁)-1
+	Line(L₁(N),L₂(N),L₁(N+1),L₂(N+1
+	If J:Then
+		R►Pr(L₁(N),L₂(N→R
+		2π/3+R►Pθ(L₁(N),L₂(N→θ
+		P►Rx(R,θ→A
+		P►Ry(R,θ→B
+		θ+2π/3→θ
+		P►Rx(R,θ→E
+		P►Ry(R,θ→F
+
+		R►Pr(L₁(N+1),L₂(N+1→R
+		2π/3+R►Pθ(L₁(N+1),L₂(N+1→θ
+		P►Rx(R,θ→C
+		P►Ry(R,θ→D
+		θ+2π/3→θ
+		P►Rx(R,θ→G
+		P►Ry(R,θ→H
+		Line(A,B,C,D
+		Line(E,F,G,H
+	End
+End

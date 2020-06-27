@@ -1,0 +1,51 @@
+Repeat Ans>0
+	Input "Iterations:",I
+	round(I,0→I
+End
+
+DelVar L₁
+DelVar L₂
+3^I+1→dim(L₁
+Ans→dim(L₂
+
+1→J
+
+0→L₁(1
+0→L₂(1
+10→L₁(dim(L₁
+0→L₂(dim(L₂
+
+⁻1.565→Xmin
+11.565→Xmax
+⁻.01→Ymin
+8.67→Ymax
+
+
+For(Z,1,I
+	3^(I-Z+1)→S
+	For(N,1+S,dim(L₁),S
+		N-S→M
+		L₁(M→A
+		L₂(M→B
+
+		L₁(N)-A→C
+		L₂(N)-B→D
+		R►Pθ(C,D→θ
+		R►Pr(C,D→R
+		θ+Jπ/3→O
+		.5R→P
+		M+S/3→G
+		A+P►Rx(P,O→L₁(G
+		B+P►Ry(P,O→L₂(G
+		θ+Jπ/6→O
+		R√(.75→P
+		G+S/3→G
+		A+P►Rx(P,O→L₁(G
+		B+P►Ry(P,O→L₂(G
+		1-2(J=1→J
+	End
+End
+
+For(N,1,dim(L₁)-1
+	Line(L₁(N),L₂(N),L₁(N+1),L₂(N+1
+End

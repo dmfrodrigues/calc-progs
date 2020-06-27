@@ -1,0 +1,28 @@
+Prompt C
+⁻1.001→Ymin
+1.001→Ymax
+⁻1.6→Xmin
+1.6→Xmax
+Input "No. of points:  ",N
+{⁻1,⁻1,1,1→L₁
+{⁻1,1,⁻1,1→L₂
+randInt(1,4→A
+L₁(A→V
+L₂(A→W
+For(n,1,N
+	Pt-On(V,W
+	randInt(1,4
+	If Ans=1:Then
+		C(V-1→V
+		C(W-1→W
+	Else:If Ans=2:Then
+		C(V-1→V
+		C(W+1→W
+	Else:If Ans=3:Then
+		C(V+1>V
+		C(W-1→W
+	Else
+		C(V+1→V
+		C(W+1→W
+	End:End:End
+End

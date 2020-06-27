@@ -1,0 +1,20 @@
+"LANGTON'S ANT"
+StoreGDB 0
+ClrDraw
+AxesOff
+0→Xmin
+94→Xmax
+⁻62→Ymin
+0→Ymax
+47→P
+⁻31→Q
+1→D
+While (Xmin≤P and P≤Xmax and Ymin≤Q and Q≤Ymax
+	If pxl-Test(⁻Q,P:Then:D+1-4(D=4→D
+	Else:D-1+4(D=1→D
+	End
+	Pt-Change(P,Q
+	P+(D=1)-(D=3→P
+	Q+(D=2)-(D=4→Q
+End
+RecallGDB 0

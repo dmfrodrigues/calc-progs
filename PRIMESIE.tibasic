@@ -1,0 +1,24 @@
+"PRIMES SIEVE"
+Input "Max number = ",N
+DelVar L₁DelVar L₂
+"L₂ - LIST OF PRIMES"
+seq(K,K,3,N,2→L₂
+For(A,1,1+√(N
+	If L₂(A)≠0:Then
+		For(B,A+L₂(A),dim(L₂),L₂(A
+			0→L₂(B
+		End
+	End
+End
+1+sum(L₂≠0→dim(L₁
+2→L₁(1
+2→B
+For(A,1,dim(L₂
+	If L₂(A)≠0:Then
+		L₂(A→L₁(B
+		B+1→B
+	End
+End
+For(A,1,dim(L₁
+	Disp L₁(A
+End

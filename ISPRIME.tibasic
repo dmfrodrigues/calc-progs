@@ -1,0 +1,23 @@
+"IS A NUMBER PRIME OR NOT"
+While 1
+	Input "Number = ",N
+	If N<0:Then
+		Disp "INVALID"
+	Else:If N=1:Then
+		Disp "NO"
+	Else:If N=2 or N=3:Then
+		Disp "YES"
+	Else:If remainder(N,2)=0 or remainder(N,3)=0:Then
+		Disp "NO"
+	Else
+		5→A
+		While A≤√(N)+1
+			If remainder(N,A)=0 or remainder(N,A+2)=0:Then
+				Disp "NO"
+				Stop
+			End
+			A+6→A
+		End
+		Disp "YES"
+	End:End:End:End
+End
