@@ -8,16 +8,18 @@ DelVar L₂
 4^I+1→dim(L₁
 Ans→dim(L₂
 
-1→L₁(1
-1→L₂(1
-11→L₁(dim(L₁
-1→L₂(dim(L₂
+0→L₁(1
+0→L₂(1
+1.5→L₁(dim(L₁
+0→L₂(dim(L₂
 
-1→Xmin
-11→Xmax
-⁻4→Ymin
-9→Ymax
+0→Xmin
+1.5→Xmax
+⁻.3→Ymin
+.7→Ymax
 
+ClrDraw
+AxesOff
 For(Z,1,I
 	4^(I-Z+1)→S
 	For(N,1+S,dim(L₁),S

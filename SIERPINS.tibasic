@@ -20,6 +20,8 @@ Ans→dim(L₂
 ⁻.01→Ymin
 8.67→Ymax
 
+ClrDraw
+AxesOff
 
 For(Z,1,I
 	3^(I-Z+1)→S

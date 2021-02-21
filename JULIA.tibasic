@@ -6,19 +6,20 @@ abs({Xmin,Xmax→L₁
 (XminXmax>0)min(L₁→A
 max(L₁→B
 
+ClrDraw
+AxesOff
 For(R,A,B,∆X
 	For(I,Ymin,Ymax,∆Y
 		Pt-On(R,I
 		Pt-On(⁻R,⁻I
-		R+Ii→Z
-		For(n,1,M
-			Z²+G+I%i→Z
-			If 2<abs(Z
-				M+9→n
-		End
-		If n-3>M:Then
-			Pt-Off(R,I
-			Pt-Off(⁻R,⁻I
+		R+I[i]→Z
+		For(n,1,M)
+			Z²+G+I%[i]→Z
+			If 2<abs(Z:Then
+				Pt-Off(R,I
+				Pt-Off(⁻R,⁻I
+				M→n
+			End
 		End
 	End
 End

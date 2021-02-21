@@ -1,4 +1,3 @@
-"IS A NUMBER PRIME OR NOT"
 While 1
 	Input "Number = ",N
 	If N<0:Then
