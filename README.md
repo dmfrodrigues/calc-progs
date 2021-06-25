@@ -30,6 +30,6 @@ Assembly programs (those starting in `AsmPrgm`) can be run using `Asm(`; e.g., c
 |-------|----------|-------|
 | <img src="media/chaos.gif"    width="271px">  | <img src="media/sierpins.gif" width="271px"> | <img src="media/julia.gif"    width="271px">  |
 
-| KOCH | LANGTON |
-|------|---------|
-| <img src="media/koch.gif"     width="271px">  | <img src="media/langton.gif"  width="271px">  |
+| KOCH | LANGTON | SNAKE |
+|------|---------|-------|
+| <img src="media/koch.gif"     width="271px">  | <img src="media/langton.gif"  width="271px">  | <img src="media/snake.gif"     width="271px"> |
